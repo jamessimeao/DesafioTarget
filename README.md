@@ -43,11 +43,11 @@ total = v + multa = (1+taxaDeJuros) * v.
 
 Ou seja, o valor total a ser pago d dias após o vencimento é dado pelo valor do dia anterior multiplicado por 1+taxaDeJuros. Portanto, o valor total a ser pago ao passarem d dias após o vencimento é
 
-valorComJuros = Pow(1+taxaDeJuros,d) * v,
+montante = Pow(1+taxaDeJuros,d) * v,
 
 em que Pow(x,d) é x elevado à potência d. Por fim, o juros a ser pago é o valor que foi acrescentado a v, ou seja,
 
-juros = valorComJuros - v
+juros = montante - v
       = Pow(1+taxaDeJuros,d) * v - v
       = (Pow(1+taxaDeJuros,d) -1)*v.
 
