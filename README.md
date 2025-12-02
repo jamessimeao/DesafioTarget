@@ -29,8 +29,26 @@ A classe Produto contém o código de um produto e sua descrição. Como espero 
 
 Os endpoints da API estão definidos no controle SolucaoController. Para inicializar o banco de dados com o estoque fornecido no json do enunciado do problema, fiz uma ação RegistraEstoque no controle SolucaoController. Essa ação processa o json de estoque e inicializa o banco de dados com essa informação. Fiz dessa forma por simplicidade, mas poderia também criar uma ação que registra produtos no banco de dados, inicializando seu estoque com quantidade 0, e depois fazer movimentações de estoque colocando os valores fornecidos no json do enunciado.
 
-Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a ação principal da API, sendo responsável por fazer as movimentações de estoque. Ela é acessada através de um POST request que envia um json com as informações da movimentação. Esse json é convertido num dto (data transfer object) MovimentacaoDeEstoqueDto, que contém as mesma propriedades de MovimentacaoDeEstoque, exceto o Id, pois este é gerado pelo banco de dados automaticamente. As informações da movimentação realizada é guardada na tabela correspondente à classe MovimentacaoDeEstoque, e a tabela de estoque é atualizada com a nova quantidade de estoque do produto. Essa quantidade é retornado na resposta da requisição POST.
+Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a ação principal da API, sendo responsável por fazer as movimentações de estoque. Ela é acessada através de um POST request que envia um json com as informações da movimentação. Esse json é convertido num dto (data transfer object) MovimentacaoDeEstoqueDto, que contém as mesma propriedades de MovimentacaoDeEstoque, exceto o Id, pois este é gerado pelo banco de dados automaticamente. As informações da movimentação realizada é guardada na tabela correspondente à classe MovimentacaoDeEstoque, e a tabela de estoque é atualizada com a nova quantidade de estoque do produto. Essa quantidade é retornada na resposta da requisição POST.
 
 # Problema 3
 
-A solução deste problema é implementada num projeto do tipo Console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido. O juros foi calculado da seguinte forma. Se não passou do vencimento, não há juros, logo ele é 0. Agora digamos que passaram d dias após o vencimento, sendo d um inteiro com d > 0. Dado um valor inicial v, a cada dia deve ser aplicada uma multa sobre o valor do dia anterior.
+A solução deste problema é implementada num projeto do tipo Console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido. O juros foi calculado da seguinte forma. Se não passou do vencimento, não há juros, logo ele é 0. Agora digamos que passaram d dias após o vencimento, sendo d um inteiro com d > 0. Dado um valor inicial v, a cada dia deve ser aplicada uma multa sobre o valor do dia anterior. Um dia após o vencimento, a multa é
+
+multa = taxaDeJuros * v.
+
+Vamos utilizar taxaDeJuros = 0,025, correspondente a uma taxa de juros de 2,5%. O valor total a ser pago 1 dia após o vencimento é então
+
+total = v + multa = (1+taxaDeJuros) * v.
+
+Ou seja, o valor total a ser pago d dias após o vencimento é dado pelo valor do dia anterior multiplicado por 1+taxaDeJuros. Portanto, o valor total a ser pago ao passarem d dias após o vencimento é
+
+valorComJuros = Pow(1+taxaDeJuros,d) * v,
+
+em que Pow(x,d) é x elevado à potência d. Por fim, o juros a ser pago é o valor que foi acrescentado a v, ou seja,
+
+juros = valorComJuros - v
+      = Pow(1+taxaDeJuros,d) * v - v
+      = (Pow(1+taxaDeJuros,d) -1)*v.
+
+Essa é a expressão utilizada pelo método Juros.
