@@ -33,7 +33,7 @@ Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a 
 
 # Problema 3
 
-A solução deste problema é implementada num projeto do tipo console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido. O juros foi calculado da seguinte forma. Se não passou do vencimento, não há juros, logo ele é 0. Agora digamos que passaram d dias após o vencimento, sendo d um inteiro com d > 0. Dado um valor inicial v, a cada dia deve ser aplicada uma multa sobre o valor do dia anterior. Um dia após o vencimento, a multa é
+A solução deste problema é implementada num projeto do tipo console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido ao atraso no pagamento. O juros foi calculado da seguinte forma. Se não passou do vencimento, não há juros, logo ele é 0. Agora digamos que passaram d dias após o vencimento, sendo d um inteiro com d > 0. Dado um valor inicial v, a cada dia deve ser aplicada uma multa sobre o valor do dia anterior. Um dia após o vencimento, a multa é
 
 multa = taxaDeJuros * v.
 
