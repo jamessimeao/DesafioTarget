@@ -33,3 +33,4 @@ Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a 
 
 # Problema 3
 
+A solução deste problema é implementada num projeto do tipo Console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido. O juros foi calculado da seguinte forma. 
