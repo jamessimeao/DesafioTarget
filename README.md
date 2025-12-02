@@ -1,6 +1,6 @@
 # DesafioTarget
 
-Minha solução para o desafio é estruturada da seguinte forma. A solução para cada um dos 3 problemas é implementada num projeto diferente. A solução para o problema N está no projeto DesafioTargetN. Para os dois primeiros problemas fiz uma API REST, em que a solução está em um dos endpoints do Controller. Para o problema 3, fiz um Console app. Escrevi também alguns testes para as soluções. Há testes para os problemas 1 e 2 no projeto DesafioTargetPostTests. Há testes unitários para o problema 3 no projeto DesafioTarget3Tests.
+Minha solução para o desafio é estruturada da seguinte forma. A solução para cada um dos 3 problemas é implementada num projeto diferente. A solução para o problema N está no projeto DesafioTargetN. Para os dois primeiros problemas fiz uma API REST, em que a solução está em um dos endpoints do Controller. Para o problema 3, fiz um console app. Escrevi também alguns testes para as soluções. Há testes para os problemas 1 e 2 no projeto DesafioTargetPostTests. Há testes unitários para o problema 3 no projeto DesafioTarget3Tests.
 
 # Problema 1
 
@@ -33,7 +33,7 @@ Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a 
 
 # Problema 3
 
-A solução deste problema é implementada num projeto do tipo Console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido. O juros foi calculado da seguinte forma. Se não passou do vencimento, não há juros, logo ele é 0. Agora digamos que passaram d dias após o vencimento, sendo d um inteiro com d > 0. Dado um valor inicial v, a cada dia deve ser aplicada uma multa sobre o valor do dia anterior. Um dia após o vencimento, a multa é
+A solução deste problema é implementada num projeto do tipo console app. Foi criada uma classe estática Solucao, cujo método Juros calcula o juros a ser pego devido. O juros foi calculado da seguinte forma. Se não passou do vencimento, não há juros, logo ele é 0. Agora digamos que passaram d dias após o vencimento, sendo d um inteiro com d > 0. Dado um valor inicial v, a cada dia deve ser aplicada uma multa sobre o valor do dia anterior. Um dia após o vencimento, a multa é
 
 multa = taxaDeJuros * v.
 
@@ -55,3 +55,6 @@ Essa é a expressão utilizada pelo método Juros.
 
 # Testes
 
+Foram feitos dois projetos para testar as soluções. Um é o DesafioTargetPostTests, que é um projeto do tipo console app. Ele faz requisições POST para as APIs dos projetos DesafioTarget1 e DesafioTarget2. Devido a isto, é necessário primeiro executar esses dois projetos antes de executar o projeto DesafioTargetPostTests. Esse projeto realiza um POST para o DesafioTarget1 enviando o json com as vendas. Essa requisição é processada, sendo calculadas as comissões dos vendedores e estas são retornadas na resposta da requisição como um json. A resposta é lida pelo console app e impressa no terminal. Também são feitos POSTs para a API do projeto DesafioTarget2. Primeiro é feito um POST que envia o json de estoque fornecido no enunciado do problema 2. Esse json é utilizado para inicializar o banco de dados. Após isso, outro POST é feito em que é enviado um json para fazer uma movimentação de estoque. As informações da movimentação são registradas numa tabela de movimentações no banco de dados. É gerado um identificador único para a movimentação de forma automática pelo banco de dados. O codigo do produto e quantidade informadas no json de movimentação são utilizados para atualizar a quantidade do produto no estoque. Por fim, a API retorna na resposta da requisição a quantidade final do produto no estoque. Essa quantidade é lida pelo console app e impressa no terminal.
+
+O outro projeto de testes é do tipo xUnit Test Project. Ele utiliza o xUnit para fazer testes unitários, sem ter um Program.cs. Devido a isto, os testes são executadas pelo comando dotnet test ou pelo Test Explorer do Visual Studio. Esse projeto faz testes unitários para o método Juros da Classe Solucao do projeto DesafioTarget3. São feitos testes para antes e após a data de vencimento. Antes da data de vencimento não há juros, ou seja, o juros é 0.
