@@ -4,7 +4,7 @@ Minha solução para o desafio é estruturada da seguinte forma. A solução par
 
 # Problema 1
 
-O problema pede para implementar um programa que calculasse as comissões dos vendedores a partir de um arquivo json. Para isto fiz o controller SolucaoController, cuja ação Solucao processa tal arquivo json e retorna um outro json com os nomes dos vendedores e respectivas comissões. Essa ação é executada ao fazer uma requisão POST para a API, enviando o json no corpo da requisição. Para o json fornecido no enunciado do problema, foi o obtido o seguinte resultado:
+O problema pede para implementar um programa que calcule as comissões dos vendedores a partir de um arquivo json. Para isto fiz o controller SolucaoController, cuja ação Solucao processa tal arquivo json e retorna um outro json com os nomes dos vendedores e respectivas comissões. Essa ação é executada ao fazer uma requisão POST para a API, enviando o json no corpo da requisição. Para o json fornecido no enunciado do problema, foi o obtido o seguinte resultado:
 
 {
   "João Silva":495.6770,
