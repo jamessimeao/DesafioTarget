@@ -39,9 +39,9 @@ multa = taxaDeJuros * v.
 
 Vamos utilizar taxaDeJuros = 0,025, correspondente a uma taxa de juros de 2,5%. O valor total a ser pago 1 dia após o vencimento é então
 
-total = v + multa = (1+taxaDeJuros) * v.
+montanteAposUmDia = v + multa = (1+taxaDeJuros) * v.
 
-Ou seja, o valor total a ser pago d dias após o vencimento é dado pelo valor do dia anterior multiplicado por 1+taxaDeJuros. Portanto, o valor total a ser pago ao passarem d dias após o vencimento é
+Assim, o valor total a ser pago d dias após o vencimento é dado pelo valor do dia anterior multiplicado por 1+taxaDeJuros. Portanto, o valor total a ser pago ao passarem d dias após o vencimento é
 
 montante = Pow(1+taxaDeJuros,d) * v,
 
