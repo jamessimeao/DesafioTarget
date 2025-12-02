@@ -52,3 +52,6 @@ juros = valorComJuros - v
       = (Pow(1+taxaDeJuros,d) -1)*v.
 
 Essa é a expressão utilizada pelo método Juros.
+
+# Testes
+
