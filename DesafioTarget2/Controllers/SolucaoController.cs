@@ -56,12 +56,12 @@ namespace DesafioTarget2.Controllers
 
         // Endpoint principal do desafio 2. Ele é responsável por fazer movimentações de estoque.
         [HttpPost]
-        public async Task<ActionResult<int>> MovimentaEstoque(MovimentacaoDeEstoque movimentacaoDeEstoque)
+        public async Task<ActionResult<int>> MovimentaEstoque(MovimentacaoDeEstoqueDto movimentacaoDeEstoqueDto)
         {
             // Encontra no banco de dados o estoque do produto com o código especificado em movimentacaoDeEstoque
             EstoqueProduto? estoqueProduto = await _dbContext.Estoque
                 .FirstOrDefaultAsync(
-                    estoqueProduto => estoqueProduto.CodigoProduto == movimentacaoDeEstoque.CodigoProduto
+                    estoqueProduto => estoqueProduto.CodigoProduto == movimentacaoDeEstoqueDto.CodigoProduto
                     );
             if(estoqueProduto == null)
             {
@@ -70,10 +70,16 @@ namespace DesafioTarget2.Controllers
             }
 
             // Atualiza o estoque, somando à quantidade de estoque a quantidade especificada em movimentacaoDeEstoque
-            estoqueProduto.Quantidade += movimentacaoDeEstoque.Quantidade;
+            estoqueProduto.Quantidade += movimentacaoDeEstoqueDto.Quantidade;
             _dbContext.Estoque.Update(estoqueProduto);
 
             // Registra a movimentação
+            MovimentacaoDeEstoque movimentacaoDeEstoque = new MovimentacaoDeEstoque()
+            {
+                Descricao = movimentacaoDeEstoqueDto.Descricao,
+                CodigoProduto = movimentacaoDeEstoqueDto.CodigoProduto,
+                Quantidade = movimentacaoDeEstoqueDto.Quantidade,
+            };
             _dbContext.MovimentacoesDeEstoque.Add(movimentacaoDeEstoque);
 
             // Executa as atualizações do banco de dados anteriores
