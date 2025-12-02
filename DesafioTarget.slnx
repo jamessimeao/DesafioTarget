@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="DesafioTarget1/DesafioTarget1.csproj" />
+  <Project Path="DesafioTarget2/DesafioTarget2.csproj" Id="d098147d-6802-46ad-92a2-c1c2da308cec" />
+  <Project Path="DesafioTarget3/DesafioTarget3.csproj" Id="aa384f66-29f6-4a89-8191-516bdb4c0773" />
+  <Project Path="DesafioTargetPostTests/DesafioTargetPostTests.csproj" Id="c6af6f01-dbff-4c2d-bd98-98498f8eb08c" />
+  <Project Path="DesafioTarget3Tests/DesafioTarget3Tests.csproj" Id="5e09e52f-02e4-462d-9923-30f66d6660d7" />
+</Solution>
