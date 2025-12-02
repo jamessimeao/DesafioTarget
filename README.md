@@ -29,4 +29,7 @@ A classe Produto contém o código de um produto e sua descrição. Como espero 
 
 Os endpoints da API estão definidos no controle SolucaoController. Para inicializar o banco de dados com o estoque fornecido no json do enunciado do problema, fiz uma ação RegistraEstoque no controle SolucaoController. Essa ação processa o json de estoque e inicializa o banco de dados com essa informação. Fiz dessa forma por simplicidade, mas poderia também criar uma ação que registra produtos no banco de dados, inicializando seu estoque com quantidade 0, e depois fazer movimentações de estoque colocando os valores fornecidos no json do enunciado.
 
-Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a ação principal da API, sendo responsável por fazer as movimentações de estoque. Ela é acessada através de um POST request que envia um json com as informações da movimentação. Esse json é convertido num dto (data transfer object) 
+Há também uma ação MovimentaEstoque no controle SolucaoController. Ela é a ação principal da API, sendo responsável por fazer as movimentações de estoque. Ela é acessada através de um POST request que envia um json com as informações da movimentação. Esse json é convertido num dto (data transfer object) MovimentacaoDeEstoqueDto, que contém as mesma propriedades de MovimentacaoDeEstoque, exceto o Id, pois este é gerado pelo banco de dados automaticamente. As informações da movimentação realizada é guardada na tabela correspondente à classe MovimentacaoDeEstoque, e a tabela de estoque é atualizada com a nova quantidade de estoque do produto. Essa quantidade é retornado na resposta da requisição POST.
+
+# Problema 3
+
